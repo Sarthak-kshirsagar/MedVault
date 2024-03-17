@@ -226,9 +226,12 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:swipeable_page_route/swipeable_page_route.dart';
+
+import '../mediaclProfile.dart';
 
 class MedicalInfoForm extends StatefulWidget {
-  const MedicalInfoForm();
+ const MedicalInfoForm();
   @override
   _MedicalInfoFormState createState() => _MedicalInfoFormState();
 }
@@ -325,7 +328,14 @@ class _MedicalInfoFormState extends State<MedicalInfoForm> {
                   fontWeight: FontWeight.bold,fontSize: 25
               ),),
             ),
+            SizedBox(height: 20,),
+            Center(
+              child: Text("Basic Information",style: TextStyle(
+                  fontWeight: FontWeight.bold,fontSize:22
+              ),),
+            ),
             TextFormField(
+
               controller: Name,
               decoration: InputDecoration(labelText: 'Name'),
             ),
@@ -373,91 +383,99 @@ class _MedicalInfoFormState extends State<MedicalInfoForm> {
               ),
             ),
             SizedBox(height: 16.0),
-            DropdownButtonFormField(
-              value: selectedOngoingMedicalCondition,
-              items: ongoingMedicalConditionsList.map((condition) {
-                return DropdownMenuItem(
-                  value: condition,
-                  child: Text(condition),
-                );
-              }).toList(),
-              onChanged: (value) {
-                setState(() {
-                  selectedOngoingMedicalCondition = value!;
-                });
-              },
-              decoration: InputDecoration(
-                labelText: 'Any ongoing medical conditions',
-              ),
-            ),
-            TextFormField(
-              controller: currentMedicationsController,
-              decoration: InputDecoration(labelText: 'Current medications (including dosage and frequency)'),
-            ),
-            TextFormField(
-              controller: surgeriesController,
-              decoration: InputDecoration(labelText: 'Previous surgeries or medical procedures'),
-            ),
-            TextFormField(
-              controller: medicalDevicesController,
-              decoration: InputDecoration(labelText: 'Any implanted medical devices'),
-            ),
-            TextFormField(
-              controller: familyMedicalHistoryController,
-              decoration: InputDecoration(labelText: 'Any relevant family medical history'),
-            ),
-            TextFormField(
-              controller: healthcareProvidersController,
-              decoration: InputDecoration(labelText: 'Healthcare Providers'),
-            ),
-            TextFormField(
-              controller: insuranceProviderController,
-              decoration: InputDecoration(labelText: 'Insurance Provider'),
-            ),
-            TextFormField(
-              controller: policyNumberController,
-              decoration: InputDecoration(labelText: 'Policy Number'),
-            ),
-            TextFormField(
-              controller: authorizationInfoController,
-              decoration: InputDecoration(labelText: 'Authorization Information'),
-            ),
-            TextFormField(
-              controller: advanceDirectivesController,
-              decoration: InputDecoration(labelText: 'Advance Directives or Living Will (if applicable)'),
-            ),
-            SizedBox(height: 16.0),
             Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  // Handle form submission
-                  saveProfileDataToFirestore(
-
-                   Name.text,
-                    emergencyContact.text,
-                    dob.text,
-
-                    selectedGender,
-                    selectedBloodType,
-                    selectedOngoingMedicalCondition,
-                    currentMedicationsController.text,
-                    surgeriesController.text,
-                    medicalDevicesController.text,
-                    familyMedicalHistoryController.text,
-                    healthcareProvidersController.text,
-                    insuranceProviderController.text,
-                    policyNumberController.text,
-                    authorizationInfoController.text,
-                    advanceDirectivesController.text,
-                  );
-                },
-                style: ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(Colors.black),
-                    foregroundColor: MaterialStatePropertyAll(Colors.white)
-                ),
-                child: Text('Update'),
-              ),
+              child: ElevatedButton(style: ButtonStyle(
+                backgroundColor: MaterialStatePropertyAll(Colors.black),
+                foregroundColor: MaterialStatePropertyAll(Colors.white)
+              ),onPressed: (){
+                  Navigator.push(context, SwipeablePageRoute(builder: (context) => MedicalInfo(fullName:Name.text,emergencyNumber: emergencyContact.text,dob: dob.text,bloodType:selectedBloodType,gender: selectedGender,),));
+              }, child: Text("Next")),
             ),
+            // DropdownButtonFormField(
+            //   value: selectedOngoingMedicalCondition,
+            //   items: ongoingMedicalConditionsList.map((condition) {
+            //     return DropdownMenuItem(
+            //       value: condition,
+            //       child: Text(condition),
+            //     );
+            //   }).toList(),
+            //   onChanged: (value) {
+            //     setState(() {
+            //       selectedOngoingMedicalCondition = value!;
+            //     });
+            //   },
+            //   decoration: InputDecoration(
+            //     labelText: 'Any ongoing medical conditions',
+            //   ),
+            // ),
+            // TextFormField(
+            //   controller: currentMedicationsController,
+            //   decoration: InputDecoration(labelText: 'Current medications (including dosage and frequency)'),
+            // ),
+            // TextFormField(
+            //   controller: surgeriesController,
+            //   decoration: InputDecoration(labelText: 'Previous surgeries or medical procedures'),
+            // ),
+            // TextFormField(
+            //   controller: medicalDevicesController,
+            //   decoration: InputDecoration(labelText: 'Any implanted medical devices'),
+            // ),
+            // TextFormField(
+            //   controller: familyMedicalHistoryController,
+            //   decoration: InputDecoration(labelText: 'Any relevant family medical history'),
+            // ),
+            // TextFormField(
+            //   controller: healthcareProvidersController,
+            //   decoration: InputDecoration(labelText: 'Healthcare Providers'),
+            // ),
+            // TextFormField(
+            //   controller: insuranceProviderController,
+            //   decoration: InputDecoration(labelText: 'Insurance Provider'),
+            // ),
+            // TextFormField(
+            //   controller: policyNumberController,
+            //   decoration: InputDecoration(labelText: 'Policy Number'),
+            // ),
+            // TextFormField(
+            //   controller: authorizationInfoController,
+            //   decoration: InputDecoration(labelText: 'Authorization Information'),
+            // ),
+            // TextFormField(
+            //   controller: advanceDirectivesController,
+            //   decoration: InputDecoration(labelText: 'Advance Directives or Living Will (if applicable)'),
+            // ),
+            // SizedBox(height: 16.0),
+            // Center(
+            //   child: ElevatedButton(
+            //     onPressed: () {
+            //       // Handle form submission
+            //       saveProfileDataToFirestore(
+            //
+            //        Name.text,
+            //         emergencyContact.text,
+            //         dob.text,
+            //
+            //         selectedGender,
+            //         selectedBloodType,
+            //         selectedOngoingMedicalCondition,
+            //         currentMedicationsController.text,
+            //         surgeriesController.text,
+            //         medicalDevicesController.text,
+            //         familyMedicalHistoryController.text,
+            //         healthcareProvidersController.text,
+            //         insuranceProviderController.text,
+            //         policyNumberController.text,
+            //         authorizationInfoController.text,
+            //         advanceDirectivesController.text,
+            //       );
+            //     },
+            //     style: ButtonStyle(
+            //         backgroundColor: MaterialStatePropertyAll(Colors.black),
+            //         foregroundColor: MaterialStatePropertyAll(Colors.white)
+            //     ),
+            //     child: Text('Update'),
+            //   ),
+            // ),
           ],
         ),
       ),

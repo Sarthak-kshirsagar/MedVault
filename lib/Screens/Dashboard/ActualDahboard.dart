@@ -214,7 +214,8 @@ class _ActualDashboardState extends State<ActualDashboard> {
               child: InkWell(
                 onTap: (){
 
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => HospitalInfo(image: "assets/sasun.jpg",logo: "assets/sasunlogo.jpg",doctorName: "Sasun",doctorId: "asd",specialization: "Multispeciality",),));
+
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => HospitalInfo(image: "assets/sasun.jpg",logo: "assets/sasunlogo.jpg",doctorName: "Sasun Government",doctorId: "asd",specialization: "Multispeciality",),));
 
                 },
                 child: Padding(
