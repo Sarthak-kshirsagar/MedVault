@@ -12,6 +12,10 @@ MedVault is an innovative application designed to streamline the interaction bet
 - **Secure Data Storage**: Utilizes smart contracts to securely store medical data, accessible only by authorized doctors.
 - **AI Features**: Includes AI features such as vitamin deficiency detection, breast cancer screening, etc.
 
+## Django Repository
+
+The repository containing the Django backend code can be found [here](https://github.com/utkarshpatil-13/renderdjangoexample).
+
 ## Screenshots
 
 ### Login Page using Firebase Phone Authentication  ::  Users can securely log in to the app using Firebase phone authentication.
