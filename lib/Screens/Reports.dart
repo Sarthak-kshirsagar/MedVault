@@ -116,6 +116,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:usalife/Screens/medicalInfo.dart';
 
@@ -232,83 +233,96 @@ class _ListOfAllPateintVisitsState extends State<ListOfAllPateintVisits> {
     return Scaffold(
       body: SafeArea(
         child: isLoading?Center(child: CircularProgressIndicator(),):Center(
-          child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.start,
-            // mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+          child: SingleChildScrollView(
+            child: Column(
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+            
+            
+                SizedBox(height: 20,),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text("Your Visits",style: TextStyle(
+                        fontWeight: FontWeight.bold,fontSize: 23
+                    ),),
+                  ),
+                ),
 
-
-              SizedBox(height: 20,),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text("Your Visits",style: TextStyle(
-                    fontWeight: FontWeight.bold,fontSize: 23
-                ),),
-              ),
-              SizedBox(height: 50,),
-              InkWell(onTap: (){
-                getUserMedicalHistoryLists("${useerId}");
-              },child: Icon(Icons.refresh)),
-              SizedBox(height: 20,),
-              Container(
-                height: 500,
-                child: ListView.builder(itemCount: conversationList1.length,itemBuilder: (context, index) {
-                  return Column(
-
-                    children: [
-                      InkWell(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => MedicalTiles(patientConversationData:conversationList1[index],),));
-                        },
-                        child: Container(
-                          width: 250,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: Colors.grey,
-
-                            ),
-                            borderRadius: BorderRadius.circular(15),
-
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Row(
-
-                                children: [
-                                  Image.asset(width:80,height:80,"assets/doctor.jpg"),
-                                  SizedBox(width: 20,),
-                                  Column(
-                                    children: [
-                                      Text("${conversationList1[index]["DoctorName"]}",style: TextStyle(
-                                          fontWeight: FontWeight.bold,fontSize: 15
-                                      ),),
-                                      SizedBox(height:10,),
-                                      Text("${conversationList1[index]["Category"]}",style: TextStyle(
-                                          fontWeight: FontWeight.bold,fontSize: 15
-                                      ),),
-                                      SizedBox(height:10,),
-                                      Text("${conversationList1[index]["Date"]}",style: TextStyle(
-                                          fontWeight: FontWeight.bold,fontSize: 15
-                                      ),)
-
-                                    ],
-                                  )
-                                ],
+                Image.asset("assets/visit.gif"),
+                SizedBox(height: 20,),
+                Padding(
+                  padding: const EdgeInsets.only(right:20.0),
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: InkWell(onTap: (){
+                      getUserMedicalHistoryLists("${useerId}");
+                    },child: Icon(Icons.refresh,color: Colors.green,)),
+                  ),
+                ),
+                SizedBox(height: 20,),
+                Container(
+                  height: 500,
+                  child: ListView.builder(itemCount: conversationList1.length,itemBuilder: (context, index) {
+                    return Column(
+            
+                      children: [
+                        InkWell(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => MedicalTiles(patientConversationData:conversationList1[index],),));
+                          },
+                          child: Container(
+                            width: 250,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.grey,
+            
                               ),
-
-                            ],
+                              borderRadius: BorderRadius.circular(15),
+            
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+            
+                                  children: [
+                                    Image.asset(width:80,height:80,"assets/doctor.jpg"),
+                                    SizedBox(width: 20,),
+                                    Column(
+                                      children: [
+                                        Text("${conversationList1[index]["DoctorName"]}",style: TextStyle(
+                                            fontWeight: FontWeight.bold,fontSize: 15
+                                        ),),
+                                        SizedBox(height:10,),
+                                        Text("${conversationList1[index]["Category"]}",style: TextStyle(
+                                            fontWeight: FontWeight.bold,fontSize: 15
+                                        ),),
+                                        SizedBox(height:10,),
+                                        Text("${conversationList1[index]["Date"]}",style: TextStyle(
+                                            fontWeight: FontWeight.bold,fontSize: 15
+                                        ),)
+            
+                                      ],
+                                    )
+                                  ],
+                                ),
+            
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(height: 20,)
-
-                    ],
-                  );
-                },),
-              )
-            ],
+                        SizedBox(height: 20,)
+            
+                      ],
+                    );
+                  },),
+                )
+              ],
+            ),
           ),
         ),
       ),

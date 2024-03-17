@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'BeastCancer.dart';
+import 'VitaminInsights.dart';
 import 'ai.dart';
 class AiFeatures extends StatefulWidget {
   const AiFeatures({super.key});
@@ -49,7 +51,7 @@ class _AiFeaturesState extends State<AiFeatures> {
                 ),
                 InkWell(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => DietScreen(),));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => BreastCancerAPIScreen(),));
                   },
                   child: Container(
                     width: 300,
@@ -87,7 +89,7 @@ class _AiFeaturesState extends State<AiFeatures> {
                 ),
                 InkWell(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => DietScreen(),));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ApiCallScreen(),));
                   },
                   child: Container(
                     width: 300,
