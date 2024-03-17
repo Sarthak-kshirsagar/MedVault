@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "347297738621",
+    "project_id": "medvalut-auth",
+    "storage_bucket": "medvalut-auth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:347297738621:android:ee00e6064455d2ae5d2614",
+        "android_client_info": {
+          "package_name": "com.example.usalife"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "347297738621-bk4uaredvgvjh7jgs46oakmcanltsipc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiyKIyYUbmOSlFV9bnVCBcAxeZAM-DvSE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "347297738621-bk4uaredvgvjh7jgs46oakmcanltsipc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
